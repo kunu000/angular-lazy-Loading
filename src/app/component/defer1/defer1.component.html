@@ -1,0 +1,29 @@
+<h1>Defer Loading 1</h1>
+
+@for (item of "kjsldfjsdlfjlskjfsdfsdfsdf"; track $index) {
+<p>
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, accusantium.
+  {{ item }}
+</p>
+}
+
+<!--  -->
+<!-- // prevent fast flickering effect when data fetch quickly -->
+
+@defer {
+<app-heavy />
+}
+@placeholder(minimum 3s) {
+<p>Loading...</p>
+}
+
+<!--  -->
+
+<!--  -->
+
+<!-- @defer {
+<app-heavy />
+}
+@error {
+  <p>Something went wrong!</p>
+} -->
