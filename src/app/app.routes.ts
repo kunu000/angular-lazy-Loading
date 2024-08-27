@@ -10,7 +10,6 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'defer-loading', pathMatch: 'full' },
-  // Lazy loading many routes at once
   {
     path: '',
     component: NavbarComponent,
@@ -33,6 +32,7 @@ export const routes: Routes = [
       },
     ],
   },
+  // Lazy loading many routes at once
   {
     path: '',
     loadChildren: () =>
