@@ -1,29 +1,64 @@
 <h1>Defer Loading 1</h1>
+<button (click)="clicked = true">load comments</button>
 
-@for (item of "kjsldfjsdlfjlskjfsdfsdfsdf"; track $index) {
+@for (item of "kjsldfjsdlfjlskjfsdfsdfsdzsdfsfsdff"; track $index) {
 <p>
   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, accusantium.
   {{ item }}
 </p>
 }
 
-<!--  -->
-<!-- // prevent fast flickering effect when data fetch quickly -->
+<h3 #loadNow style="margin-bottom: 1000px">Now load content below</h3>
 
-@defer {
+<!-- prevent fast flickring effect -->
+<!-- load new chunk for app-heavy component -->
+<!-- if bundle loads within 1ms then show loading content for minimum 1s. other wise show content -->
+
+<!-- @defer{
 <app-heavy />
-}
-@placeholder(minimum 3s) {
-<p>Loading...</p>
-}
-
-<!--  -->
-
-<!--  -->
-
-<!-- @defer {
-<app-heavy />
-}
-@error {
-  <p>Something went wrong!</p>
+}@loading(after 1ms;minimum 2s) {
+<p>Loading content...</p>
+}@error {
+<p>Error while loading</p>
 } -->
+
+<!-- placeholder -->
+<!-- load bundle when defer component is in the view of user (or) timer of 3 second is complete -->
+<!-- It will triggered when either of condition meet -->
+<!-- on work as (OR) -->
+
+<!-- @defer(on viewport;on timer(3s)){
+<app-heavy />
+} @placeholder(minimum 2s) {
+<p>placeholder</p>
+}@error {
+<p>Error while loading</p>
+} -->
+
+<!-- on with when also work as (OR) -->
+
+<!-- @defer(on viewport; when clicked){
+<app-heavy />
+} @placeholder(minimum 2s) {
+<p>placeholder</p>
+}@error {
+<p>Error while loading</p>
+} -->
+
+<!-- idle will trigger the deferred loading once the browser has reached an idle state. This is the default behavior with a defer block. -->
+
+<!-- @defer(on idle){
+<app-heavy />
+} @placeholder(minimum 2s) {
+<p>placeholder</p>
+}@error {
+<p>Error while loading</p>
+} -->
+
+@if(clicked){ @defer (on viewport(loadNow)) {
+<app-heavy />
+}@placeholder {
+<p>placeholder</p>
+}@error {
+<p>Error while loading</p>
+} }

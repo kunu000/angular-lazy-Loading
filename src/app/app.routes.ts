@@ -5,6 +5,7 @@ import { C2Component } from './component/c2/c2.component';
 import { AdminC1Component } from './component/admin-c1/admin-c1.component';
 import { AdminC2Component } from './component/admin-c2/admin-c2.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
+import { Defer2Component } from './component/defer2/defer2.component';
 
 // Go line wise
 
@@ -15,6 +16,7 @@ export const routes: Routes = [
     component: NavbarComponent,
     children: [
       { path: 'defer-loading', component: Defer1Component },
+      { path: 'defer-loading2', component: Defer2Component },
       // Lazy loading a standalone component
       {
         path: 'c1',

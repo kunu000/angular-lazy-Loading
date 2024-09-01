@@ -1,0 +1,57 @@
+<h1>Defer Loading 2</h1>
+<button #interaction>load comments</button>
+
+@for (item of "kjsldfjsdlfjlskjfsdfsdfsdzsdfsfsdff"; track $index) {
+<p>
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, accusantium.
+  {{ item }}
+</p>
+}
+
+<!--  interaction will trigger the deferred block when the user interacts with the specified element through click or keydown events.-->
+
+<!-- @defer (on interaction(interaction)) {
+<app-heavy />
+}@placeholder {
+<p>placeholder</p>
+} -->
+
+<!-- By default, the placeholder will act as the interaction element as long as it is a single root element node. -->
+
+<!-- @defer (on interaction) {
+<app-heavy />
+}@placeholder {
+<p>placeholder</p>
+} -->
+
+<!-- hover triggers deferred loading when the mouse has hovered over the trigger area. Events used for this are mouseenter and focusin. -->
+
+<!-- @defer (on hover(interaction)) {
+<app-heavy />
+}@placeholder {
+<p>placeholder</p>
+} -->
+
+<!-- By default, the placeholder will act as the hover element as long as it is a single root element node -->
+
+<!-- @defer (on hover) {
+<app-heavy />
+}@placeholder {
+<p>placeholder</p>
+} -->
+
+<!-- immediate triggers the deferred load immediately, meaning once the client has finished rendering, the defer chunk would then start fetching right away. -->
+
+<!-- @defer (on immediate) {
+<app-heavy />
+}@placeholder {
+<p>placeholder</p>
+} -->
+
+<!-- This will load the bundle when browser is idle and when user interact with placeholder it start running the component  -->
+<!-- It make the resource load faster -->
+@defer (on interaction; prefetch on idle) {
+<app-heavy />
+} @placeholder {
+<p>placeholder</p>
+}

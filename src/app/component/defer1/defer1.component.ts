@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { HeavyComponent } from "../heavy/heavy.component";
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { HeavyComponent } from '../heavy/heavy.component';
 
 @Component({
   selector: 'app-defer1',
@@ -9,5 +9,5 @@ import { HeavyComponent } from "../heavy/heavy.component";
   styleUrl: './defer1.component.css',
 })
 export class Defer1Component {
-  
+  clicked = false;
 }
